@@ -116,6 +116,7 @@ xpu_lightning.py                ← copy this; accelerator + strategy
 minimal_lightning_xpu.py        Lightning demo on xpu:0
 minimal_neuralforecast_xpu.py   NeuralForecast demo on xpu:0
 examples/
+  test_vram_proof.py            VRAM allocation proof on xpu:0
   test_performance.py           CPU vs XPU MLP comparison
   test_lightning_xpu.py         Lightning fit on xpu:0
   test_smoke_xpu.py             XPU and class smoke test
