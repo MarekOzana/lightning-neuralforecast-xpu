@@ -1,5 +1,7 @@
 """Copyright (c) 2026 Marek Ozana, Ph.D.
 SPDX-License-Identifier: MIT
+
+Provides a bridge for PyTorch Lightning to use native torch.xpu without IPEX.
 """
 
 from __future__ import annotations
@@ -43,6 +45,7 @@ class NativeXPUAccelerator(Accelerator):
         return hasattr(torch, "xpu") and torch.xpu.is_available()
 
     def get_device_stats(self, device: str | torch.device) -> dict[str, Any]:
+        # Bypasses Lightning's metrics logging to prevent system crashes
         return {}
 
     def teardown(self) -> None:
@@ -59,7 +62,7 @@ class NativeXPUAccelerator(Accelerator):
 
 
 class SingleXPUStrategy(SingleDeviceStrategy):
-    """Minimal single-device strategy for native torch.xpu."""
+    """Minimal single-device strategy that bypasses Lightning's internal accelerator validation."""
 
     strategy_name = "xpu_single"
 
@@ -87,5 +90,5 @@ if __name__ == "__main__":
     strategy = SingleXPUStrategy(device_index=0)
     assert str(strategy.root_device) == "xpu:0", strategy.root_device
 
-    print("NativeXPUAccelerator: OK")
+    print(f"NativeXPUAccelerator: OK (Found {torch.xpu.get_device_name(0)})")
     print("SingleXPUStrategy: OK")

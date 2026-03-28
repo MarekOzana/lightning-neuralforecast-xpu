@@ -52,17 +52,14 @@ See [minimal_lightning_xpu.py](./minimal_lightning_xpu.py) and [minimal_neuralfo
 
 ### Install
 
-```bash
-# ================================================
-# DO NOT INSTALL intel_extension_for_pytorch HERE.
-# This repo uses native torch.xpu only.
-# ================================================
+> **WARNING:** DO NOT INSTALL `intel_extension_for_pytorch` HERE. This repo uses native torch.xpu only.
 
+```bash
 pip install --index-url https://download.pytorch.org/whl/xpu "torch==2.11.0"
 pip install "pytorch-lightning==2.6.1" "neuralforecast==3.1.6" "polars==1.38.1" "pytest==8.4.2" "scipy==1.17.1"
 ```
 
-Or with uv for the requirements file: 
+Or with uv (a fast package installer): 
 ```bash
 uv pip install torch --index https://download.pytorch.org/whl/xpu
 uv pip install -r requirements.txt
@@ -130,7 +127,7 @@ requirements.txt                pinned versions + XPU wheel note
 
 Lightning has no built-in XPU accelerator yet; see [issue #20938](https://github.com/Lightning-AI/pytorch-lightning/issues/20938).
 PyTorch has supported Intel GPUs natively since 2.5 (October 2024).
-Intel EOL'd IPEX in March 2026. This repo is the shortest working bridge.
+Intel EOL'd IPEX (their legacy PyTorch extension) in March 2026. This repo is the shortest working bridge.
 
 ## License
 
