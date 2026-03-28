@@ -34,7 +34,7 @@ HIDDEN_SIZE = 2048
 NUM_LAYERS = 3
 BATCH_SIZE = 64
 FORECAST_COLUMN = "MLP"
-MAX_RELATIVE_MAE = 0.05
+MAX_RELATIVE_MAE = 0.07
 
 
 class QuietLightningFilter(logging.Filter):

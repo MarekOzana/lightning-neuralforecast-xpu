@@ -2,7 +2,7 @@
 
 - Use `SingleXPUStrategy(device_index=0)` to run Lightning and NeuralForecast on native `torch.xpu`.
 
-That's it. Tested here on Intel Arc Pro B50 / Ubuntu 25.10 with `torch==2.11.0+xpu`, `pytorch-lightning==2.6.1`, and `neuralforecast==3.1.6`.
+That's it. Tested here on Intel Arc Pro B50 / Ubuntu 25.10 and Windows 11 with `torch==2.11.0+xpu`, `pytorch-lightning==2.6.1`, and `neuralforecast==3.1.6`.
 
 ## Choose your path
 
@@ -95,14 +95,15 @@ That whole bridge lives in `xpu_lightning.py`. The two classes in that file are 
 
 ## Version requirements
 
-| Package | Tested here |
-| --- | --- |
-| Python | 3.13.0 |
-| torch (xpu wheel) | 2.11.0+xpu |
-| pytorch_lightning | 2.6.1 |
-| neuralforecast | 3.1.6 |
-| polars | 1.38.1 |
-| intel_extension_for_pytorch | not installed |
+| Package | Tested | Tested |
+| --- | --- | --- |
+| OS | Ubuntu 25.10 | Windows 11 |
+| Python | 3.13.0 | 3.12.13 |
+| torch (xpu wheel) | 2.11.0+xpu | 2.11.0+xpu |
+| pytorch_lightning | 2.6.1 | 2.6.1 |
+| neuralforecast | 3.1.6 | 3.1.6 |
+| polars | 1.38.1 | 1.38.1 |
+| intel_extension_for_pytorch | not installed | not installed |
 
 These are the versions tested in this repo. Other versions may work, but they are not verified here.
 NeuralForecast currently publishes Python 3.10-3.13 classifiers, and Python 3.14 is not yet supported there.

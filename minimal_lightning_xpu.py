@@ -62,6 +62,7 @@ def main() -> None:
         batch_size=32,
         shuffle=True,
         num_workers=2,
+        persistent_workers=True,
     )
 
     trainer = L.Trainer(
