@@ -1,3 +1,7 @@
+"""Copyright (c) 2026 Marek Ozana, Ph.D.
+SPDX-License-Identifier: MIT
+"""
+
 from __future__ import annotations
 
 from datetime import date, timedelta
