@@ -62,7 +62,11 @@ pip install --index-url https://download.pytorch.org/whl/xpu "torch==2.11.0"
 pip install "pytorch-lightning==2.6.1" "neuralforecast==3.1.6" "polars==1.38.1" "pytest==8.4.2" "scipy==1.17.1"
 ```
 
-Or with uv for the requirements file: `uv pip install -r requirements.txt`
+Or with uv for the requirements file: 
+```bash
+uv pip install torch --index https://download.pytorch.org/whl/xpu
+uv pip install -r requirements.txt
+```
 
 ### Run
 
@@ -98,7 +102,7 @@ That whole bridge lives in `xpu_lightning.py`. The two classes in that file are 
 | Package | Tested | Tested |
 | --- | --- | --- |
 | OS | Ubuntu 25.10 | Windows 11 |
-| Python | 3.13.0 | 3.12.13 |
+| Python | **3.13**.12 | **3.12**.13 |
 | torch (xpu wheel) | 2.11.0+xpu | 2.11.0+xpu |
 | pytorch_lightning | 2.6.1 | 2.6.1 |
 | neuralforecast | 3.1.6 | 3.1.6 |
