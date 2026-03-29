@@ -17,6 +17,7 @@ from torch.utils.data import DataLoader, TensorDataset
 
 from xpu_lightning import SingleXPUStrategy
 
+
 class VRAMTrackingModel(L.LightningModule):
     def __init__(self) -> None:
         super().__init__()
@@ -47,7 +48,7 @@ def test_actually_uses_xpu_vram() -> None:
     initial_vram = torch.xpu.memory_allocated()
 
     model = VRAMTrackingModel()
-    
+
     # Model starts on CPU before training
     assert model.layer.weight.device.type == "cpu"
 
@@ -72,11 +73,11 @@ def test_actually_uses_xpu_vram() -> None:
 
     # Proof 1: Lightning actually mutated the model's device during training
     assert model.layer_device_type == "xpu"
-    
+
     # Proof 2: Lightning passed the batch directly to XPU before training_step
     assert model.batch_device_type == "xpu"
 
-    # Proof 3: The ultimate proof - Intel hardware actually allocated memory. 
+    # Proof 3: The ultimate proof - Intel hardware actually allocated memory.
     # Strings can be spoofed, hardware VRAM counters cannot.
     assert model.vram_during_fit > initial_vram
     assert model.vram_during_fit > 0

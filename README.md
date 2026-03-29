@@ -82,6 +82,10 @@ python -m pytest -s examples/
 # or: uv run pytest -s examples/
 ```
 
+> **Expected output:** `GPU available: False, used: False` is normal for native `torch.xpu`.
+
+Quick check during training: `model.layer.weight.device.type` should be `xpu`, or use `torch.xpu.get_device_name(0)`.
+
 ## Why this works — the one insight
 
 Lightning checks `accelerator` by name, so this is the error you hit first:
